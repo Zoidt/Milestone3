@@ -2,6 +2,7 @@
 using Ecommerce.Api.Products.Db;
 using Ecommerce.Api.Products.Interfaces;
 using Ecommerce.Api.Products.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Ecommerce.Api.Products.Providers
 
         private void SeedData()
         {
-            if (dbContext.Products.Any())
+            if (!dbContext.Products.Any())
             {
                 dbContext.Products.Add(new Db.Product() { Id = 1, Name = "Keyboard", Price = 20, Inventory = 100 });
                 dbContext.Products.Add(new Db.Product() { Id = 2, Name = "Mouse", Price = 5, Inventory = 200 });
@@ -37,9 +38,23 @@ namespace Ecommerce.Api.Products.Providers
             }
         }
 
-        public Task<(bool isSuccess, IEnumerable<Models.Product> Products, string ErrorMessage)> getProductsAsync()
+        public async Task<(bool isSuccess, IEnumerable<Models.Product> Products, string ErrorMessage)> GetProductsAsync()
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var products = await dbContext.Products.ToListAsync();
+                if(products != null && products.Any())
+                {
+                    var result = mapper.Map<IEnumerable<Db.Product>, IEnumerable<Models.Product>>(products);
+                    return (true, result, null);
+                }
+                return (false, null, "Not Found");
+            }
+            catch (Exception ex)
+            {
+                logger?.LogError(ex.ToString());
+                return (false, null, ex.Message);
+            }
         }
     }
 }

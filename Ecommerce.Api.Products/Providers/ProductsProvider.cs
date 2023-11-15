@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Product = Ecommerce.Api.Products.Models.Product;
 
 namespace Ecommerce.Api.Products.Providers
 {
@@ -38,6 +40,7 @@ namespace Ecommerce.Api.Products.Providers
             }
         }
 
+        [HttpGet]
         public async Task<(bool isSuccess, IEnumerable<Models.Product> Products, string ErrorMessage)> GetProductsAsync()
         {
             try
@@ -56,5 +59,26 @@ namespace Ecommerce.Api.Products.Providers
                 return (false, null, ex.Message);
             }
         }
+
+        [HttpGet("{id}")]
+        public async Task<(bool isSuccess, Product product, string ErrorMessage)> GetProductAsync(int id)
+        {
+            try
+            {
+                var product = await dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
+                if(product != null)
+                {
+                    var result = mapper.Map<Db.Product, Models.Product>(product);
+                    return (true, result, null);
+                }
+                return (false, null, "Not Found");
+            }
+            catch (Exception ex)
+            {
+                logger?.LogError(ex.ToString());
+                return (false, null, ex.Message);
+            }
+        }
+        
     }
 }

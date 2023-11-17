@@ -41,14 +41,14 @@ namespace Ecommerce.Api.Products.Providers
         }
 
         [HttpGet]
-        public async Task<(bool isSuccess, IEnumerable<Models.Product> Products, string ErrorMessage)> GetProductsAsync()
+        public async Task<(bool IsSuccess, IEnumerable<Product> Products, string ErrorMessage)> GetProductsAsync()
         {
             try
             {
                 var products = await dbContext.Products.ToListAsync();
                 if(products != null && products.Any())
                 {
-                    var result = mapper.Map<IEnumerable<Db.Product>, IEnumerable<Models.Product>>(products);
+                    var result = mapper.Map<IEnumerable<Db.Product>, IEnumerable<Product>>(products);
                     return (true, result, null);
                 }
                 return (false, null, "Not Found");
@@ -60,13 +60,14 @@ namespace Ecommerce.Api.Products.Providers
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<(bool isSuccess, Product product, string ErrorMessage)> GetProductAsync(int id)
+  
+        public async Task<(bool IsSuccess, Product Product, string ErrorMessage)> GetProductAsync(int id)
         {
             try
             {
                 var product = await dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
-                if(product != null)
+
+                if (product != null)
                 {
                     var result = mapper.Map<Db.Product, Models.Product>(product);
                     return (true, result, null);

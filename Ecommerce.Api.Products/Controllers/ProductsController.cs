@@ -4,6 +4,16 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Api.Products.Controllers
 {
+    /*
+      * Course: 		Web Programming 3
+      * Assessment: 	Milestone 3
+      * Created by: 	ZAID TABANA - 2043269
+      * Date: 		    17 - 11 - 2023
+      * Class Name: 	ProductsController.cs
+      * Description: 	Routes HTTP requests to approriate web pages. 
+      *                 Uses repository to update or retrieve information from an SQL database.
+      *                This controller is responsible for handling Product/s requests
+      */
     [ApiController]
     [Route("api/products")]
     public class ProductsController : ControllerBase   

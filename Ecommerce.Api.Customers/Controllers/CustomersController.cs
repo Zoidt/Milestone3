@@ -4,6 +4,16 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Api.Customers.Controllers
 {
+        /*
+      * Course: 		Web Programming 3
+      * Assessment: 	Milestone 3
+      * Created by: 	ZAID TABANA - 2043269
+      * Date: 		    17 - 11 - 2023
+      * Class Name: 	CustomersController.cs
+      * Description: 	Routes HTTP requests to approriate web pages. 
+      *                 Uses repository to update or retrieve information from an SQL database.
+      *                This controller is responsible for handling Customer/s requests
+      */
     [ApiController]
     [Route("api/customers")]
     public class CustomersController : ControllerBase

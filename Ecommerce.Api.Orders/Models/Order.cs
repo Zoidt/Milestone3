@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Ecommerce.Api.Orders.Db;
 using System.Collections.Generic;
+using System;
 
-namespace Ecommerce.Api.Orders.Db
+namespace Ecommerce.Api.Orders.Models
 {
     public class Order
     {

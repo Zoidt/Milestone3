@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Ecommerce.Api.Orders.Db;
 using Ecommerce.Api.Orders.Interfaces;
-using Ecommerce.Api.Orders.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
@@ -32,21 +31,26 @@ namespace Ecommerce.Api.Orders.Providers
             if (!_dbContext.Orders.Any())
             {
                 // First Order - order items
-                List<Db.OrderItem> orderItems = new List<Db.OrderItem>
-                {
-                    new Db.OrderItem() { Id = 1, OrderId = 1, ProductId = 1, Quantity= 10, UnitPrice= 10},
-                    new Db.OrderItem() { Id = 2, OrderId = 2, ProductId = 2, Quantity= 1, UnitPrice= 250}
-                };
-                var total = orderItems.Sum(item => item.Quantity * item.UnitPrice); 
+                
+
+                
                 _dbContext.Orders.Add(new Db.Order()
                 {
 
                     Id = 1,
                     CustomerId = 1,
                     OrderDate = DateTime.Now,
-                    Total = total,
-                    Items = orderItems
+                    Total = 100,
+                    Items = new List<OrderItem>()
+                    {
+                        new OrderItem() { OrderId = 1, ProductId = 1, Quantity = 10, UnitPrice = 10 },
+                        new OrderItem() { OrderId = 1, ProductId = 2, Quantity = 10, UnitPrice = 10 },
+                        new OrderItem() { OrderId = 1, ProductId = 3, Quantity = 10, UnitPrice = 10 },
+                        new OrderItem() { OrderId = 2, ProductId = 2, Quantity = 10, UnitPrice = 10 },
+                        new OrderItem() { OrderId = 3, ProductId = 3, Quantity = 1, UnitPrice = 100 }
+                    }
                 });
+
                 _dbContext.SaveChanges();
             }
         }

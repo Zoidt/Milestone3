@@ -13,6 +13,7 @@ namespace Ecommerce.Api.Products.Test
 {
     public class ProductsServiceTest
     {
+        // Comment to test Azure CICD
         [Fact]
         public async Task GetProductsReturnsAllProducts()
         {

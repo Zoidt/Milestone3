@@ -5,6 +5,17 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Api.Search.Controllers
 {
+    /*
+      * Course: 		Web Programming 3
+      * Assessment: 	Milestone 3
+      * Created by: 	ZAID TABANA - 2043269
+      * Date: 		    9 December 2023
+      * Class Name: 	SearchController.cs
+      * Description: 	Class handles POST Requests for search terms.
+      *                 This controller is central for other microservices (Customers, Products, Orders)
+      *                 Currently requires a customer ID and will fetch all relevant info in the other
+      *                 microservices used in the project.
+      */
     [ApiController]
     [Route("api/search")]
     public class SearchController : ControllerBase

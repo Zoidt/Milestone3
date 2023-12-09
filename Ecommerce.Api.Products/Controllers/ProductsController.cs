@@ -10,9 +10,9 @@ namespace Ecommerce.Api.Products.Controllers
       * Created by: 	ZAID TABANA - 2043269
       * Date: 		    17 - 11 - 2023
       * Class Name: 	ProductsController.cs
-      * Description: 	Routes HTTP requests to approriate web pages. 
-      *                 Uses repository to update or retrieve information from an SQL database.
-      *                This controller is responsible for handling Product/s requests
+      * Description: 	Class handles HTTP GET Requests for products through route api/products.
+      *                 Currently only supports GET requests for all products or 
+      *                 for specific products using a product ID. 
       */
     [ApiController]
     [Route("api/products")]

@@ -10,9 +10,8 @@ namespace Ecommerce.Api.Customers.Controllers
       * Created by: 	ZAID TABANA - 2043269
       * Date: 		    17 - 11 - 2023
       * Class Name: 	CustomersController.cs
-      * Description: 	Routes HTTP requests to approriate web pages. 
-      *                 Uses repository to update or retrieve information from an SQL database.
-      *                This controller is responsible for handling Customer/s requests
+      * Description: 	This controller is responsible for handling Customer/s requests
+      *                 Currently only supports GET Requests for all or specific customer IDs
       */
     [ApiController]
     [Route("api/customers")]

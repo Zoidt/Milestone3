@@ -43,7 +43,7 @@ namespace Ecommerce.Api.Orders.Controllers
         ///         "CustomerId": "Keyboard",
         ///         "OrderDate": 20,
         ///         "Items": 
-        ///                 {
+        ///                 [
         ///                     {
         ///                         "id": 2,
         ///                         "ProductId": "mouse",
@@ -56,7 +56,7 @@ namespace Ecommerce.Api.Orders.Controllers
         ///                         "Quantity": 10
         ///                         "UnitPrice": 100
         ///                     }
-        ///                 }
+        ///                 ]
         ///     }
         /// </code>
         /// </remarks>

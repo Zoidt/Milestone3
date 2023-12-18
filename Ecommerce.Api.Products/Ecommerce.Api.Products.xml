@@ -8,7 +8,7 @@
             <summary>
             Get all products
             </summary>
-            <returns>RIActionResult</returns>
+            <returns>IActionResult</returns>
             <response code="200">Returns all products</response>
             <remarks>
             Sample request:
@@ -51,12 +51,10 @@
              <code>        
              GET /products/1
              {
-                 {
-                     "id": 1,
-                     "name": "Keyboard",
-                     "price": 20,
-                     "inventory": 100
-                 }
+                 "id": 1,
+                 "name": "Keyboard",
+                 "price": 20,
+                 "inventory": 100
              }
              </code>
              </remarks>

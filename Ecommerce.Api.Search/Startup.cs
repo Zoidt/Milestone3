@@ -12,6 +12,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Polly;
+using Microsoft.OpenApi.Models;
+using System.IO;
+using System.Reflection;
 
 namespace Ecommerce.Api.Search
 {
@@ -46,6 +49,18 @@ namespace Ecommerce.Api.Search
                 config.BaseAddress = new Uri(Configuration["Services:Customers"]);
             });
             services.AddControllers();
+
+            services.AddMvc();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My Products API", Version = "v1" });
+
+                // set the path t the generated XML document found in the project root folder, named as the project name.
+                var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentsFile);
+                c.IncludeXmlComments(xmlCommentsFullPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +78,16 @@ namespace Ecommerce.Api.Search
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            //insert iddleware
+            app.UseSwagger();
+
+            //Insert the swagger-ui middleware to expose interactive documentation
+            //specifying the Swagger JSON endpoint(s)  to power it from.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("v1/swagger.json", "My Products API V1");
             });
         }
     }

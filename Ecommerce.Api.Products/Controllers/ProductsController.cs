@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Api.Products.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -16,6 +17,7 @@ namespace Ecommerce.Api.Products.Controllers
       */
     [ApiController]
     [Route("api/products")]
+    [Produces("application/json")]
     public class ProductsController : ControllerBase   
     {
         private readonly IProductsProvider productsProvider;
@@ -25,7 +27,15 @@ namespace Ecommerce.Api.Products.Controllers
             this.productsProvider = productsProvider;
         }
 
+        /// <summary>
+        /// Get all products
+        /// </summary>
+        /// <returns>RIActionResult</returns>
+        /// <response code="200">Returns all products</response>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetProductsAsync()
         {
             var result = await productsProvider.GetProductsAsync();
@@ -37,7 +47,16 @@ namespace Ecommerce.Api.Products.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Get product by the provided id.
+        /// </summary>
+        /// <param name="id">of the product</param>
+        /// <returns>IActionResult</returns>
+        /// <response code="200">Returns the requested product</response>
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetProductAsync(int id)
         {
            var result = await productsProvider.GetProductAsync(id);

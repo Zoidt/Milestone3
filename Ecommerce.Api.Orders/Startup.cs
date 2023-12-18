@@ -46,7 +46,7 @@ namespace Ecommerce.Api.Orders
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My Products API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My Orders API", Version = "v1" });
 
                 // set the path t the generated XML document found in the project root folder, named as the project name.
                 var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -79,7 +79,7 @@ namespace Ecommerce.Api.Orders
             //specifying the Swagger JSON endpoint(s)  to power it from.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("v1/swagger.json", "My Products API V1");
+                c.SwaggerEndpoint("v1/swagger.json", "My Orders API V1");
             });
         }
     }

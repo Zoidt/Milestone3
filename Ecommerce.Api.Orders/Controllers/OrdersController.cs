@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Api.Orders.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -16,6 +17,7 @@ namespace Ecommerce.Api.Orders.Controllers
      */
     [ApiController]
     [Route("api/orders")]
+    [Produces("application/json")]
     public class OrdersController : ControllerBase
     {
         private readonly IOrdersProvider ordersProvider;
@@ -25,7 +27,42 @@ namespace Ecommerce.Api.Orders.Controllers
             this.ordersProvider = ordersProvider;
         }
 
+
+        /// <summary>
+        /// Get order using provided ID
+        /// </summary>
+        /// <returns>IActionResult</returns>
+        /// <response code="200">Returns all products</response>
+        /// <remarks>
+        /// Sample request:
+        /// <code>
+        /// GET /products/1
+        /// {
+        ///     {
+        ///         "id": 1,
+        ///         "name": "Keyboard",
+        ///         "price": 20,
+        ///         "inventory": 100
+        ///     },
+        ///     {
+        ///         "id": 2,
+        ///         "name": "mouse",
+        ///         "price": 10,
+        ///         "inventory": 100
+        ///     },
+        ///     {
+        ///         "id": 3,
+        ///         "name": "Usb",
+        ///         "price": 2,
+        ///         "inventory": 1000
+        ///     }
+        /// }
+        /// </code>
+        /// </remarks>
         [HttpGet("{customerId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetOrdersAsync(int customerId)
         {
             var result = await ordersProvider.GetOrdersAsync(customerId);

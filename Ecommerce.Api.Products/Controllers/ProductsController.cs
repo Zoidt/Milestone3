@@ -30,7 +30,7 @@ namespace Ecommerce.Api.Products.Controllers
         /// <summary>
         /// Get all products
         /// </summary>
-        /// <returns>RIActionResult</returns>
+        /// <returns>IActionResult</returns>
         /// <response code="200">Returns all products</response>
         /// <remarks>
         /// Sample request:

@@ -1,5 +1,6 @@
 ﻿using Ecommerce.Api.Search.Interfaces;
 using Ecommerce.Api.Search.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -29,6 +30,9 @@ namespace Ecommerce.Api.Search.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> SearchAsync(SearchTerm term)
         {
             var result = await searchService.SearchAsync(term.CustomerID);

@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Api.Customers.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -26,6 +27,9 @@ namespace Ecommerce.Api.Customers.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetCustomersAsync()
         {
             var result = await customersProvider.GetCustomersAsync();
@@ -37,6 +41,9 @@ namespace Ecommerce.Api.Customers.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetCustomersAsync(int id)
         {
             var result = await customersProvider.GetCustomerAsync(id);

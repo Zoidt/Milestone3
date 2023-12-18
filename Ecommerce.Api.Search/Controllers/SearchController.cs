@@ -18,6 +18,7 @@ namespace Ecommerce.Api.Search.Controllers
       */
     [ApiController]
     [Route("api/search")]
+    [Produces("application/json")]
     public class SearchController : ControllerBase
     {
         private readonly ISearchService searchService;

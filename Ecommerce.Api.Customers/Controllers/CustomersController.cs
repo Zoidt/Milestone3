@@ -15,6 +15,7 @@ namespace Ecommerce.Api.Customers.Controllers
       */
     [ApiController]
     [Route("api/customers")]
+    [Produces("application/json")]
     public class CustomersController : ControllerBase
     {
         private readonly ICustomersProvider customersProvider;

@@ -29,34 +29,35 @@ namespace Ecommerce.Api.Orders.Controllers
 
 
         /// <summary>
-        /// Get order using provided ID
+        /// Get all orders with provided customer ID
         /// </summary>
         /// <returns>IActionResult</returns>
-        /// <response code="200">Returns all products</response>
+        /// <response code="200">Returns orders</response>
         /// <remarks>
         /// Sample request:
         /// <code>
-        /// GET /products/1
-        /// {
+        /// GET /Orders/1
+        /// 
         ///     {
         ///         "id": 1,
-        ///         "name": "Keyboard",
-        ///         "price": 20,
-        ///         "inventory": 100
-        ///     },
-        ///     {
-        ///         "id": 2,
-        ///         "name": "mouse",
-        ///         "price": 10,
-        ///         "inventory": 100
-        ///     },
-        ///     {
-        ///         "id": 3,
-        ///         "name": "Usb",
-        ///         "price": 2,
-        ///         "inventory": 1000
+        ///         "CustomerId": "Keyboard",
+        ///         "OrderDate": 20,
+        ///         "Items": 
+        ///                 {
+        ///                     {
+        ///                         "id": 2,
+        ///                         "ProductId": "mouse",
+        ///                         "Quantity": 10,
+        ///                         "UnitPrice": 100
+        ///                     },
+        ///                     {
+        ///                         "id": 3,
+        ///                         "ProductId": "mouse",
+        ///                         "Quantity": 10
+        ///                         "UnitPrice": 100
+        ///                     }
+        ///                 }
         ///     }
-        /// }
         /// </code>
         /// </remarks>
         [HttpGet("{customerId}")]

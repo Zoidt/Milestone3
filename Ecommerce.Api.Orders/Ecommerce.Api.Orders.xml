@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ecommerce.Api.Orders</name>
+    </assembly>
+    <members>
+        <member name="M:Ecommerce.Api.Orders.Controllers.OrdersController.GetOrdersAsync(System.Int32)">
+            <summary>
+            Get all orders with provided customer ID
+            </summary>
+            <returns>IActionResult</returns>
+            <response code="200">Returns orders</response>
+            <remarks>
+            Sample request:
+            <code>
+            GET /Orders/1
+            
+                {
+                    "id": 1,
+                    "CustomerId": "Keyboard",
+                    "OrderDate": 20,
+                    "Items": 
+                            {
+                                {
+                                    "id": 2,
+                                    "ProductId": "mouse",
+                                    "Quantity": 10,
+                                    "UnitPrice": 100
+                                },
+                                {
+                                    "id": 3,
+                                    "ProductId": "mouse",
+                                    "Quantity": 10
+                                    "UnitPrice": 100
+                                }
+                            }
+                }
+            </code>
+            </remarks>
+        </member>
+    </members>
+</doc>

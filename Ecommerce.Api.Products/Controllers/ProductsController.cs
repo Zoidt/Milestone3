@@ -86,12 +86,10 @@ namespace Ecommerce.Api.Products.Controllers
         /// <code>        
         /// GET /products/1
         /// {
-        ///     {
-        ///         "id": 1,
-        ///         "name": "Keyboard",
-        ///         "price": 20,
-        ///         "inventory": 100
-        ///     }
+        ///     "id": 1,
+        ///     "name": "Keyboard",
+        ///     "price": 20,
+        ///     "inventory": 100
         /// }
         /// </code>
         /// </remarks>

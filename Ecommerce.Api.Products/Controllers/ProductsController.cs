@@ -32,6 +32,32 @@ namespace Ecommerce.Api.Products.Controllers
         /// </summary>
         /// <returns>RIActionResult</returns>
         /// <response code="200">Returns all products</response>
+        /// <remarks>
+        /// Sample request:
+        /// <code>
+        /// GET /products/1
+        /// {
+        ///     {
+        ///         "id": 1,
+        ///         "name": "Keyboard",
+        ///         "price": 20,
+        ///         "inventory": 100
+        ///     },
+        ///     {
+        ///         "id": 2,
+        ///         "name": "mouse",
+        ///         "price": 10,
+        ///         "inventory": 100
+        ///     },
+        ///     {
+        ///         "id": 3,
+        ///         "name": "Usb",
+        ///         "price": 2,
+        ///         "inventory": 1000
+        ///     }
+        /// }
+        /// </code>
+        /// </remarks>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -53,6 +79,22 @@ namespace Ecommerce.Api.Products.Controllers
         /// <param name="id">of the product</param>
         /// <returns>IActionResult</returns>
         /// <response code="200">Returns the requested product</response>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///
+        /// <code>        
+        /// GET /products/1
+        /// {
+        ///     {
+        ///         "id": 1,
+        ///         "name": "Keyboard",
+        ///         "price": 20,
+        ///         "inventory": 100
+        ///     }
+        /// }
+        /// </code>
+        /// </remarks>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

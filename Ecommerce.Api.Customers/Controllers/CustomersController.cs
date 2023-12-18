@@ -26,6 +26,34 @@ namespace Ecommerce.Api.Customers.Controllers
             this.customersProvider = customersProvider;
         }
 
+        /// <summary>
+        /// Get all customers
+        /// </summary>
+        /// <returns>IActionResult</returns>
+        /// <response code="200">Returns customers</response>
+        /// <remarks>
+        /// Sample request:
+        /// <code>
+        /// GET /customers
+        /// {
+        ///     {
+        ///         "id": 1,
+        ///         "name": "Lebron James",
+        ///         "Address": "212 G Street",
+        ///     },
+        ///     {
+        ///         "id": 2,
+        ///         "name": "Kratos",
+        ///         "Address": "Valhalla",
+        ///     },
+        ///     {
+        ///         "id": 3,
+        ///         "name": "Peter Parker",
+        ///         "Address": "Symbiote City",
+        ///     }
+        /// }
+        /// </code>
+        /// </remarks>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -40,6 +68,24 @@ namespace Ecommerce.Api.Customers.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Get customer with provided id
+        /// </summary>
+        /// <returns>IActionResult</returns>
+        /// <response code="200">Returns customer</response>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///
+        /// <code>        
+        /// GET /customers/1
+        /// {
+        ///     "id": 1,
+        ///     "name": "Lebron James",
+        ///     "Address": "212 G Street,
+        /// }
+        /// </code>
+        /// </remarks>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
